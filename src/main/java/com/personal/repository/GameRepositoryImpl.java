@@ -25,6 +25,8 @@ public class GameRepositoryImpl implements GameRepository {
         + "result = 'U' and date < current_date()";
     private final String UPDATE_GAME_RESULT_SQL = "UPDATE Game "
         + "SET result = ? where id = ?";
+    private final String GET_GAMES_BY_LEAGUE_SQL = "SELECT * FROM Game WHERE "
+        + "league = ?";
     
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -50,6 +52,11 @@ public class GameRepositoryImpl implements GameRepository {
     @Override
     public List<Game> getPastGamesWithNoResult() {
         return jdbcTemplate.query(GET_PAST_GAMES_NO_RESULT_SQL, gameRowMapper);
+    }
+
+    @Override
+    public List<Game> getGamesByLeague(String league) {
+        return jdbcTemplate.query(GET_GAMES_BY_LEAGUE_SQL, gameRowMapper, league);
     }
     
     @Override

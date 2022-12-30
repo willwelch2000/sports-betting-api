@@ -35,6 +35,11 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
+    public List<Game> getGamesByLeague(String league) {
+        return gameRepository.getGamesByLeague(league);
+    }
+
+    @Override
     public Number addGame(Game game) {
         return gameRepository.addGame(game);
     }

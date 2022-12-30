@@ -9,6 +9,7 @@ public interface GameRepository {
     public Game getGame(Number gameId);
     public List<Game> getGamesWithResult();
     public List<Game> getPastGamesWithNoResult();
+    public List<Game> getGamesByLeague(String league);
     public Number addGame(Game game);
     public void updateGameResult(Game game);
 }
